@@ -1,3 +1,10 @@
+<?php
+require_once __DIR__ . '/controllers/EstudianteController.php';
+
+$controller = new EstudianteController();
+$estudiantes = $controller->obtenerEstudiantes();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -38,10 +45,9 @@
       </div>
     </div>
   </div>
-  
 
   <div class="form-container">
-    <h2>Registro de Estudiantes</h2>   
+    <h2>Registro de Estudiantes</h2>
     <form action="controllers/EstudianteController.php" method="POST">
       <div class="form-group">
         <label for="carnet">Carnet:</label>
@@ -70,6 +76,41 @@
     </form>
   </div>
 
+  <!-- Tabla de estudiantes -->
+  <div class="students-table-container">
+    <h2>Estudiantes Registrados</h2>
+
+    <?php if (count($estudiantes) > 0): ?>
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>Carnet</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Género</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($estudiantes as $estudiante): ?>
+            <tr>
+              <td><?= htmlspecialchars($estudiante->getCarnet()) ?></td>
+              <td><?= htmlspecialchars($estudiante->getNombre()) ?></td>
+              <td><?= htmlspecialchars($estudiante->getEdad()) ?></td>
+              <td>
+                <?=
+                htmlspecialchars(
+                  $estudiante->getGenero() == 'M' ? 'Masculino' : ($estudiante->getGenero() == 'F' ? 'Femenino' : 'Otro')
+                )
+                ?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    <?php else: ?>
+      <p class="no-students">No hay estudiantes registrados aún.</p>
+    <?php endif; ?>
+  </div>
   <script src="script.js"></script>
 </body>
 

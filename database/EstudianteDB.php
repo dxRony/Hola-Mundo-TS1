@@ -1,6 +1,6 @@
 <?php
-require_once '../database/Database.php';
-require_once '../models/EstudianteModel.php';
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/../models/EstudianteModel.php';
 
 class EstudianteDB
 {

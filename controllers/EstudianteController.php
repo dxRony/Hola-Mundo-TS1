@@ -1,7 +1,6 @@
 <?php
-require_once '../models/EstudianteModel.php';
-require_once '../database/EstudianteDB.php';
-
+require_once __DIR__ . '/../models/EstudianteModel.php';
+require_once __DIR__ . '/../database/EstudianteDB.php';
 
 class EstudianteController
 {
@@ -33,6 +32,10 @@ class EstudianteController
         }
 
         header("Location: ../index.php");
+    }
+
+    public function obtenerEstudiantes(){
+        return $this->dao->listar();
     }
 }
 
