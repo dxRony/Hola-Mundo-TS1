@@ -21,7 +21,9 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Iniciar Sesion</button>
+            <button type="submit" class="btn">Iniciar Sesion</button>
+            <p></p>
+            <a href="../index.php" class="btn">Regresar</a>
         </form>
     </div>
 </body>

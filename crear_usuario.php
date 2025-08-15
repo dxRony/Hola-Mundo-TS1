@@ -1,5 +1,5 @@
 <?php
-require_once 'database/Database.php'; // Ajusta la ruta según tu estructura
+require_once 'utils/DBConexionphp'; // Ajusta la ruta según tu estructura
 
 /*
 try {
@@ -26,7 +26,7 @@ try {
 */ 
 
 try {
-    $db = new Database();
+    $db = new DBConexion();
     $conn = $db->getConnection();
 
     $username = "secre";

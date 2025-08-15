@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/../utils/DBConexion.php';
 require_once __DIR__ . '/../models/EstudianteModel.php';
 
 class EstudianteDB
@@ -8,7 +8,7 @@ class EstudianteDB
 
     public function __construct()
     {
-        $database = new Database();
+        $database = new DBConexion();
         $this->db = $database->getConnection();
     }
 

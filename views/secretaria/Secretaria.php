@@ -17,7 +17,7 @@ $estudiantes = $controller->obtenerEstudiantes();
 </head>
 
 <body>
-
+    <a href="../../controllers/LoginController.php?logout=1" class="btn logout-btn">Cerrar sesión</a>
     <div class="form-container">
         <h2>Bienvenida secretaria</h2>
         <select name="opciontes" id="opciones">

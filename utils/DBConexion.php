@@ -1,5 +1,5 @@
 <?php
-class Database {
+class DBConexion {
     private $host = "localhost";
     private $usuario = "rony";
     private $contrasena = "5812";

@@ -12,7 +12,7 @@
 
     <div class="form-container">
         <h2>Registro de estudiantes a TS1</h2>
-        <form action="controllers/EstudianteController.php" method="POST">
+        <form action="../../controllers/EstudianteController.php" method="POST">
             <div class="form-group">
                 <label for="carnet">Carnet:</label>
                 <input type="text" id="carnet" name="carnet" required>

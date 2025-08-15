@@ -54,3 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new LoginController();
     $controller->login();
 }
+
+if (isset($_GET['logout'])) {
+    $controller = new LoginController();
+    $controller->logout();
+}
