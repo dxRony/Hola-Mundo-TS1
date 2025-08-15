@@ -21,12 +21,12 @@ class EstudianteController
             try {
                 $estudiante = new EstudianteModel($carnet, $nombre, $edad, $genero);
                 if ($this->dao->crear($estudiante)) {
-                    echo "<script>alert('Estudiante registrado exitosamente'); window.location.href='../index.php';</script>";
+                    echo "<script>alert('Estudiante registrado exitosamente'); window.location.href='../views/secretaria/Secretaria.php';</script>";
                 } else {
-                    echo "<script>alert('Error al registrar el estudiante'); window.location.href='../index.php';</script>";
+                    echo "<script>alert('Error al registrar el estudiante'); window.location.href='../views/secretaria/Secretaria.php';</script>";
                 }
             } catch (Exception $e) {
-                header("Location: ../index.php");
+                header("Location: ../views/secretaria/Secretaria.php");
             }
             exit();
         }
