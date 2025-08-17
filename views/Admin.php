@@ -1,1 +1,0 @@
-<h1>Pantalla de administrador</h1>

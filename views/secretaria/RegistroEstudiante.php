@@ -17,17 +17,14 @@
                 <label for="carnet">Carnet:</label>
                 <input type="text" id="carnet" name="carnet" required>
             </div>
-
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
             </div>
-
             <div class="form-group">
                 <label for="edad">Edad:</label>
                 <input type="number" id="edad" name="edad" min="16" max="100" required>
             </div>
-
             <div class="form-group">
                 <label for="genero">Género:</label>
                 <select id="genero" name="genero" required>

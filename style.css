@@ -163,3 +163,12 @@ img {
     right: 4px;
     background-color: #e74c3c;
 }
+
+.img-admin {
+    width: 520px;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
