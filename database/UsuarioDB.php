@@ -13,16 +13,16 @@ class UsuarioDB
     }
 
     public function crear(UsuarioModel $usuario)
-    {
+    {        
         $stmt = $this->db->prepare("INSERT INTO Usuario (username, celular, nombre, contrasena, rol) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param(
-            "sssss",
+            "ssssi",
             $usuario->getUsername(),
             $usuario->getCelular(),
             $usuario->getNombre(),
             $usuario->getContrasena(),
             $usuario->getRol()
-        );
+        );       
 
         return $stmt->execute();
     }
@@ -46,9 +46,25 @@ class UsuarioDB
         return $usuarios;
     }
 
+    public function update(UsuarioModel $usuario)
+    {
+        $stmt = $this->db->prepare("UPDATE Usuario SET username = ?, celular = ?, nombre = ?, contrasena = ?, rol = ? WHERE id = ?");
+        $stmt->bind_param(
+            "sssssi",
+            $usuario->getUsername(),
+            $usuario->getCelular(),
+            $usuario->getNombre(),
+            $usuario->getContrasena(),
+            $usuario->getRol(),
+            $usuario->getId()
+        );
+
+        return $stmt->execute();
+    }
+
     public function login($username, $contrasena)
     {
-        $stmt = $this->db->prepare("SELECT id, username, contrasena, nombre, rol FROM Usuario WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT id, username, celular, nombre, contrasena, rol FROM Usuario WHERE username = ?");
 
         if (!$stmt) {
             error_log("Error preparing statement: " . $this->db->error);
@@ -79,5 +95,27 @@ class UsuarioDB
         }
 
         return false;
+    }
+
+    public function obtenerUsuarioPorId($id)
+    {
+        $stmt = $this->db->prepare("SELECT id, username, celular, nombre, contrasena, rol FROM Usuario WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $fila = $result->fetch_assoc();
+            return new UsuarioModel(
+                $fila['id'],
+                $fila['username'],
+                $fila['celular'],
+                $fila['nombre'],
+                $fila['contrasena'],
+                $fila['rol']
+            );
+        }
+
+        return null;
     }
 }

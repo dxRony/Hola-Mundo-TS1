@@ -11,15 +11,16 @@
 <body>
 
     <div class="form-container">
-        <h2>Registro de secretarias a sistema</h2>
+        <h2>Registro de secretaria a sistema</h2>
         <form action="../../controllers/UsuarioController.php" method="POST">
+            <input type="hidden" name="accion" value="registrar">
             <div class="form-group">
                 <label for="username">Nombre de usuario:</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
                 <label for="celular">Celular:</label>
-                <input type="number" id="celular" name="celuar" min="1" max="999999" required>
+                <input type="number" id="celular" name="celular" required>
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>

@@ -22,7 +22,7 @@
 
 
     <div class="tool-section">
-        <img src="images/admin.avif" alt="Imagen de secretaria" class="img-admin">
+        <img src="images/admin.avif" alt="Imagen de administrador" class="img-admin">
     </div>
 
     <script>
