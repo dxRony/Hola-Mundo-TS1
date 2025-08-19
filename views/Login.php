@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <?php if (isset($_GET['error'])): ?>
+        <script>
+            alert('Usuario o contraseña incorrectos');
+        </script>
+    <?php endif; ?>
 
     <div class="main-container">
         <h2>Iniciar Sesión</h2>

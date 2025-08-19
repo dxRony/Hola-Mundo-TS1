@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
+    header("Location: ../../views/Login.php");
+    exit();
+}
+?>
 <!doctype html>
 <html lang="en">
 

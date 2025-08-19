@@ -3,7 +3,6 @@ require_once '../../controllers/UsuarioController.php';
 
 $controller = new UsuarioController();
 
-// Si viene por GET -> mostrar el formulario con datos actuales
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $usuario = $controller->obtenerPorId($id);
@@ -13,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     }
 }
 
-// Si viene por POST -> actualizar en la base de datos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $username = $_POST['username'];

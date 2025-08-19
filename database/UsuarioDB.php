@@ -89,9 +89,11 @@ class UsuarioDB
                 );
             } else {
                 error_log("Password verification failed for user: $username");
+                return null;
             }
         } else {
             error_log("User not found: $username");
+            return null;
         }
 
         return false;

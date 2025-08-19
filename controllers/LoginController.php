@@ -15,35 +15,35 @@ class LoginController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST['usuario'];
             $password = $_POST['password'];
-
-            $usuario = $this->usuarioDB->login($username, $password);
-
-            if ($usuario) {
-                session_start();
-                $_SESSION['usuario'] = [
-                    'id' => $usuario->getId(),
-                    'username' => $usuario->getUsername(),
-                    'nombre' => $usuario->getNombre(),
-                    'rol' => $usuario->getRol()
-                ];
-
-                if ($usuario->getRol() == 1) {
-                    header("Location: ../views/admin/Admin.php");
-                } else if ($usuario->getRol() == 2) {
-                    header("Location: ../views/secretaria/Secretaria.php");
-                }
-                exit();
-            } else {
-                echo "<script>alert('Usuario o contraseña incorrectos');</script>";
+            if (empty($username) || empty($password)) {
+                echo "<script>alert('Por favor, complete todos los campos');</script>";
                 header("Location: ../views/Login.php");
                 exit();
             }
+
+            $usuario = $this->usuarioDB->login($username, $password);
+            if ($usuario == null) {
+                header("Location: ../views/Login.php?error=1");
+                exit();
+            }
+
+            session_start();
+            $_SESSION['usuario'] = [
+                'id' => $usuario->getId(),
+                'username' => $usuario->getUsername(),
+                'nombre' => $usuario->getNombre(),
+                'rol' => $usuario->getRol()
+            ];
+
+            if ($usuario->getRol() == 1) {
+                header("Location: ../views/admin/Admin.php");
+            } else if ($usuario->getRol() == 2) {
+                header("Location: ../views/secretaria/Secretaria.php");
+            }
+            exit();
         }
-
-        header("Location: ../views/Login.php");
-        exit();
     }
-
+    
     public function logout()
     {
         session_start();

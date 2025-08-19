@@ -18,10 +18,20 @@ class EstudianteController
             $edad = $_POST['edad'];
             $genero = $_POST['genero'];
 
+            if (empty($carnet) || empty($nombre) || empty($edad) || empty($genero)) {
+                echo "<script>alert('Todos los campos son obligatorios'); window.location.href='../views/secretaria/Secretaria.php';</script>";
+                exit();
+            }
+
+            if (!is_numeric($edad) || $edad < 0) {
+                echo "<script>alert('La edad debe ser un número positivo'); window.location.href='../views/secretaria/Secretaria.php';</script>";
+                exit();
+            }
+
             try {
                 $estudiante = new EstudianteModel($carnet, $nombre, $edad, $genero);
                 if ($this->dao->crear($estudiante)) {
-                    echo "<script>alert('Estudiante registrado exitosamente'); window.location.href='../views/secretaria/Secretaria.php';</script>";
+                    echo "<script>alert('Estudiante registrado'); window.location.href='../views/secretaria/Secretaria.php';</script>";
                 } else {
                     echo "<script>alert('Error al registrar el estudiante'); window.location.href='../views/secretaria/Secretaria.php';</script>";
                 }
@@ -30,15 +40,20 @@ class EstudianteController
             }
             exit();
         }
-
-        header("Location: ../index.php");
     }
 
-    public function obtenerEstudiantes(){
-        return $this->dao->listar();
+    public function obtenerEstudiantes()
+    {
+        $listadoEstudiantes = $this->dao->listar();
+        if (empty($listadoEstudiantes)) {
+            echo "<script>alert('No hay estudiantes registrados'); window.location.href='../views/secretaria/Secretaria.php';</script>";
+            exit();
+            return $listadoEstudiantes;
+        } else {
+            return $listadoEstudiantes;
+        }
     }
 }
-
 if (isset($_POST['carnet'])) {
     $controller = new EstudianteController();
     $controller->registrarEstudiante();

@@ -1,5 +1,5 @@
 <?php
-require_once 'utils/DBConexion.php'; // Ajusta la ruta según tu estructura
+require_once 'utils/DBConexion.php';
 
 
 try {
@@ -16,7 +16,7 @@ try {
     
     if ($stmt->execute()) {
         echo "Usuario creado exitosamente:<br>";
-        echo "Usuario: admin<br>Contraseña: admin123";
+        echo "Usuario: secre4<br>Contraseña: secre4";
     } else {
         echo "Error al crear usuario: " . $conn->error;
     }

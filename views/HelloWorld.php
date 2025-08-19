@@ -1,6 +1,10 @@
 <div class="main-container">
-    <h2 id="js-msj"><?php echo "HOLA MUNDO!!!!"; ?></h2>
-    <button onclick="ocultarMensaje()">Ocultar/Mostrar Hola Mundo</button>
+    <h2 id="js-msj"><?php echo "Bienvenido"; ?></h2>
+    <p>Este es un mini sistema de introduccion a tecnologias web!</p>
+    <p>Este sistema cuenta con entradas, salidas, procesamientos, reportes, acceso de lectura y escritura a base de datos.
+        El objetivo principal de este sistema es llevar un control de los estudiantes que estan llevando el curso de Teoría de Sistemas 1.
+        Gestionando tambien a las empleadas secretarias que estan a cargo del registro de los estudiantes.
+    </p> 
     <br><br>
     <a href="views/Login.php">
         <button type="button">Iniciar Sesión</button>
@@ -8,7 +12,7 @@
 </div>
     
 <div class="tool-section">
-    <h1>Para este hola mundo estoy utilizando:</h1>
+    <h1>Para este mini sistema estoy utilizando:</h1>
     <div class="tool-cards">
         <div class="tool-card">
             <h2>CSS</h2>

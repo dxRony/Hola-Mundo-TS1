@@ -22,6 +22,11 @@ class UsuarioController
             $rol = 2;
             $id = 0;
 
+            if (empty($username) || empty($celular) || empty($nombre) || empty($contrasena) || empty($confirmacionContrasena)) {
+                echo "<script>alert('Todos los campos son obligatorios'); window.location.href='../views/admin/RegistroSecretaria.php';</script>";
+                exit();
+            }
+
             if ($confirmacionContrasena !== $contrasena) {
                 echo "<script>alert('Las contraseñas no coinciden'); window.location.href='../views/admin/RegistroSecretaria.php';</script>";
                 exit();
@@ -50,9 +55,14 @@ class UsuarioController
 
     public function editarUsuario($id, $username, $celular, $nombre, $contrasena, $rol)
     {
+        if (empty($id) || empty($username) || empty($celular) || empty($nombre)) {
+            echo "<script>alert('Todos los campos son obligatorios'); window.location.href='EditarSecretaria.php?id=$id';</script>";
+            exit();
+        }
+
         if (!empty($contrasena) && !empty($_POST['confirmacionContrasena'])) {
             if ($_POST['confirmacionContrasena'] !== $contrasena) {
-                echo "<script>alert('Las contraseñas no coinciden'); window.location.href='../views/admin/EditarSecretaria.php?id=$id';</script>";
+                echo "<script>alert('Las contraseñas no coinciden'); window.location.href='EditarSecretaria.php?id=$id';</script>";
                 exit();
             }
         }
@@ -62,7 +72,7 @@ class UsuarioController
             $username,
             $celular,
             $nombre,
-            password_hash($contrasena, PASSWORD_BCRYPT),
+            $contrasena,
             $rol
         );
         return $this->dao->update($usuario);
