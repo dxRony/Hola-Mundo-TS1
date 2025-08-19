@@ -1,0 +1,7 @@
+todo:
+- manual de usuario
+- documentacion tecnica
+	- diagrama de clases
+	- diagrama de secuencia
+	- diagrama de despliegue
+- limpiar codigo
