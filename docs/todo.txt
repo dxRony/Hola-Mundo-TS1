@@ -3,5 +3,7 @@ todo:
 - documentacion tecnica
 	- diagrama de clases
 	- diagrama de secuencia
+	- diagrama de paquetes
 	- diagrama de despliegue
+	- diagrama ER
 - limpiar codigo
