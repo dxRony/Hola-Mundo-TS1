@@ -29,7 +29,10 @@ class EstudianteController
             }
 
             try {
-                $estudiante = new EstudianteModel($carnet, $nombre, $edad, $genero);
+                session_start();
+                $idUsuario = $_SESSION['usuario']['id'];
+
+                $estudiante = new EstudianteModel($carnet, $nombre, $edad, $genero, $idUsuario);
                 if ($this->dao->crear($estudiante)) {
                     echo "<script>alert('Estudiante registrado'); window.location.href='../views/secretaria/Secretaria.php';</script>";
                 } else {

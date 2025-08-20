@@ -30,7 +30,7 @@ class UsuarioDB
     public function listar()
     {
         $usuarios = array();
-        $resultado = $this->db->query("SELECT id, username, celular, nombre, contrasena, rol FROM Usuario");
+        $resultado = $this->db->query("SELECT id, username, celular, nombre FROM Usuario WHERE rol = 2");
 
         while ($fila = $resultado->fetch_assoc()) {
             $usuarios[] = new UsuarioModel(
@@ -38,8 +38,8 @@ class UsuarioDB
                 $fila['username'],
                 $fila['celular'],
                 $fila['nombre'],
-                $fila['contrasena'],
-                $fila['rol']
+                '',
+                0
             );
         }
 
@@ -54,7 +54,7 @@ class UsuarioDB
             $usuario->getUsername(),
             $usuario->getCelular(),
             $usuario->getNombre(),
-            $usuario->getContrasena(),
+            password_hash($usuario->getContrasena(), PASSWORD_BCRYPT),
             $usuario->getRol(),
             $usuario->getId()
         );

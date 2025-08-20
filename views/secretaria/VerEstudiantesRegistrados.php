@@ -27,6 +27,7 @@ $estudiantes = $controller->obtenerEstudiantes();
                     <th>Nombre</th>
                     <th>Edad</th>
                     <th>Género</th>
+                    <th>Registrado por</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +36,12 @@ $estudiantes = $controller->obtenerEstudiantes();
                         <td><?= htmlspecialchars($estudiante->getCarnet()) ?></td>
                         <td><?= htmlspecialchars($estudiante->getNombre()) ?></td>
                         <td><?= htmlspecialchars($estudiante->getEdad()) ?></td>
-                        <td><?= htmlspecialchars($estudiante->getGenero())?></td>
+                        <td><?= htmlspecialchars($estudiante->getGenero()) ?></td>
+                        <td>
+                            <?= htmlspecialchars($estudiante->getNombreUsuario())
+                                
+                            ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

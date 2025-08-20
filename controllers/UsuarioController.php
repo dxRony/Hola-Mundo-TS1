@@ -20,7 +20,7 @@ class UsuarioController
             $contrasena = $_POST['contrasena'];
             $confirmacionContrasena = $_POST['confirmacionContrasena'];
             $rol = 2;
-            $id = 0;
+            $id = 0;            
 
             if (empty($username) || empty($celular) || empty($nombre) || empty($contrasena) || empty($confirmacionContrasena)) {
                 echo "<script>alert('Todos los campos son obligatorios'); window.location.href='../views/admin/RegistroSecretaria.php';</script>";
@@ -31,6 +31,8 @@ class UsuarioController
                 echo "<script>alert('Las contraseñas no coinciden'); window.location.href='../views/admin/RegistroSecretaria.php';</script>";
                 exit();
             }
+            //actualizando contrasena hasheada
+            $contrasena = password_hash($contrasena, PASSWORD_BCRYPT);
 
             try {
                 $usuario = new UsuarioModel($id, $username, $celular, $nombre, $contrasena, $rol);

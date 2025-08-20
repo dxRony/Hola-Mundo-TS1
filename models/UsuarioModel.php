@@ -15,7 +15,7 @@ class UsuarioModel
         $this->username = $username;
         $this->celular = $celular;
         $this->nombre = $nombre;
-        $this->contrasena = password_hash($contrasena, PASSWORD_BCRYPT);
+        $this->contrasena = $contrasena;
         $this->rol = $rol;
     }
 

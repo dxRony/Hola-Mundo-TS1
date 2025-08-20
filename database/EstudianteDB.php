@@ -14,13 +14,14 @@ class EstudianteDB
 
     public function crear(EstudianteModel $estudiante)
     {
-        $stmt = $this->db->prepare("INSERT INTO Estudiante (carnet, nombre, edad, genero) VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO Estudiante (carnet, nombre, edad, genero, idUsuario) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param(
-            "ssis",
+            "ssisi",
             $estudiante->getCarnet(),
             $estudiante->getNombre(),
             $estudiante->getEdad(),
-            $estudiante->getGenero()
+            $estudiante->getGenero(),
+            $estudiante->getIdUsuario()
         );
 
         return $stmt->execute();
@@ -29,19 +30,29 @@ class EstudianteDB
     public function listar()
     {
         $estudiantes = array();
-        $resultado = $this->db->query("SELECT carnet, nombre, edad, genero FROM Estudiante");
+        $resultado = $this->db->query("SELECT e.carnet, e.nombre, e.edad, 
+        e.genero, e.idUsuario, u.username as nombreUsuario, u.nombre 
+        as nombreCompletoUsuario FROM Estudiante e LEFT JOIN Usuario u ON 
+        e.idUsuario = u.id ORDER BY e.nombre");
+
+
 
         while ($fila = $resultado->fetch_assoc()) {
-            $estudiantes[] = new EstudianteModel(
+            $estudiante = new EstudianteModel(
                 $fila['carnet'],
                 $fila['nombre'],
                 $fila['edad'],
-                $fila['genero']
+                $fila['genero'],
+                $fila['idUsuario']
             );
-        }
 
+            $estudiante->setNombreUsuario($fila['nombreCompletoUsuario']);
+
+            $estudiantes[] = $estudiante;
+        }
         return $estudiantes;
     }
+
 
     public function __destruct()
     {
