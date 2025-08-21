@@ -31,6 +31,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 2) {
     <div class="tool-section">
         <img src="images/Secretaria.png" alt="Imagen de secretaria" class="img-secre">
     </div>
+    <audio class = "audio-botton" controls src="../../audio/Agua fondo.mp3"></audio>
 
     <script>
         document.getElementById('opciones').addEventListener('change', function() {
