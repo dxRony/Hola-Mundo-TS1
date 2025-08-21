@@ -18,7 +18,7 @@ $secretarias = $controller->obtenerUsuarios();
 <body>
 
     <div class="students-table-container">
-        <h2>Secretarias registradas a TS1</h2>
+        <h2>Secretarias registradas en el sistema</h2>
 
         <table class="students-table">
             <thead>
